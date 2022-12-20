@@ -1,0 +1,106 @@
+2)Design and implement a stack using linked list and demonstrate its working with necessary inputs. Display the appropriate messages in case of exception.
+
+AIM :Implementation of stack using linked list.
+
+ALGORITHM:
+1)push()
+Step1:start.
+Step2:Create a new node with the given data.
+Step3:Check whether the stack is empty(head==NULL).
+Step4:if it is empty ,then set the pointer of the node to NULL.
+Step5:Else then make the node point to head.
+Step6:Make the new node created as head.
+Step7:Stop.
+2)pop()
+Step1:Start
+Step2:Check whether the stack is empty.
+Step3:If empty, then display “Empty stack”.
+Step4:Else create a temporary node and set it to head.
+Step5:Print the data of head.
+Step6:Make head to point to next node.
+Step7:delete the temporary node.
+Step8:End.
+Display()
+Step1:Start.
+Step2:create a temporary node and initialize it with head pointer.
+Step3:check if stack is empty, display “stack is empty”
+Step4:Else ,transverse the temporary node if full is encountered.
+Step5:Stop.
+
+//program to implement stack using an array
+#include <stdio.h>
+#include <stdlib.h>
+#define size 4
+int top=-1,inp_arr[size];
+void push();
+void pop();
+void show();
+int main()
+{
+	int choice;
+	while(1)
+{
+	printf("output performed by stack");
+	printf("\n push");
+	printf("\n pop");
+	printf("\n show");
+	printf("\n exit");
+	scanf("%d",& choice);       
+	switch(choice)            //   switch to select the operation
+	{
+		case 1: push();
+		break;
+		case 2: pop();
+		break;
+		case 3: show();
+		break;
+		case 4: exit(0);
+		default: printf("invalid option");
+	}
+}
+}
+void push()
+{
+	int x;
+	if(top==size-1)           //checking if the stack is full
+	{
+		printf("overflow");
+	}
+	else
+	{
+		printf("enter elements to be inserted");
+		scanf("%d",&x);
+		top=top+1;          //incrementing the top value
+		inp_arr[top]=x;
+	}
+}
+void pop()
+{
+	int x;
+	if(top==-1)
+	{
+		printf("/n underflow");
+	}
+	else
+	{
+		printf("enter the elements to be removed");
+		inp_arr[top];
+		top=top-1;               //decrementing the top value
+	}
+}
+void show()
+{
+	int i;
+	printf("the elements of the stack are:");
+	for(i=0;i<=top;i++)              //displaying the elements of the stack
+	{
+		printf("%d\n",inp_arr[i]);
+	}
+}	
+	 
+}
+	
+
+
+ 
+
