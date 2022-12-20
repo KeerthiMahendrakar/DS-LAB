@@ -1,31 +1,4 @@
-2)Design and implement a stack using linked list and demonstrate its working with necessary inputs. Display the appropriate messages in case of exception.
 
-AIM :Implementation of stack using linked list.
-
-ALGORITHM:
-1)push()
-Step1:start.
-Step2:Create a new node with the given data.
-Step3:Check whether the stack is empty(head==NULL).
-Step4:if it is empty ,then set the pointer of the node to NULL.
-Step5:Else then make the node point to head.
-Step6:Make the new node created as head.
-Step7:Stop.
-2)pop()
-Step1:Start
-Step2:Check whether the stack is empty.
-Step3:If empty, then display “Empty stack”.
-Step4:Else create a temporary node and set it to head.
-Step5:Print the data of head.
-Step6:Make head to point to next node.
-Step7:delete the temporary node.
-Step8:End.
-Display()
-Step1:Start.
-Step2:create a temporary node and initialize it with head pointer.
-Step3:check if stack is empty, display “stack is empty”
-Step4:Else ,transverse the temporary node if full is encountered.
-Step5:Stop.
 
 //program to implement stack using an array
 #include <stdio.h>
