@@ -1,0 +1,33 @@
+//program to calculate factorial of a number
+#include<stdio.h>
+#include<stdlib.h>
+int fac(int);       //declaring a function
+int main()
+{
+    int i,result;    //initialising the variables
+    printf("enter the number whose factorial is to calculated");
+    scanf("%d",&i);          //taking the input
+    result=fac(i);           //calling the function
+    if(result)
+    {
+        printf("%d",result);
+    }
+    return 0;
+}
+int fac(int n)
+{
+
+    if(n==0)
+    {
+        return 1;        //if entered number is 0 it returns 1
+    }
+    else if(n==1)
+    {
+        return 1;         //if entered number is 1 it returns 1
+    }
+    else{
+        return n*fac(n-1);         //if entered number is other than 0 and 1 
+    }
+
+
+}
