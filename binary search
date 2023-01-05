@@ -1,0 +1,29 @@
+//program to execute binary search
+#include<stdio.h>
+int binary_search(int arr[],int x,int low,int high)      //declaring the function
+{
+    if(high>=low)
+    {
+        int mid=low+(high-low)/2;
+        if(arr[mid]==x)              //checking if the element is at index mid
+            return mid;
+        if(arr[mid]>x)
+            return binary_search(arr,x,low,mid+1);       //checking if the element is at the index greater than mid
+        if(arr[mid]<x)
+            return binary_search(arr,x,mid+1,high);      //checking if the element is at the index less than mid
+    }
+    return -1;
+}
+int main(void)
+{
+
+    int arr[]={3,4,5,6,7,8,9};
+    int n=sizeof(arr)/sizeof(arr[0]);
+    int x=4;
+    int result= binary_search(arr,x,0,n-1);           //calling the function
+    if(result==-1)
+    printf("not found");
+    else
+    printf("element is found at index %d",result);     //printing the result
+
+}
