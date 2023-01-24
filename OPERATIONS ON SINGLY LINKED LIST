@@ -1,0 +1,212 @@
+//program to execute singly linked list
+#include<stdio.h>
+#include<stdlib.h>
+struct node                                                 //creating a node
+{
+	struct node *next;
+	int data;
+};
+struct node *head;
+void insert_begin();
+void insert_last();
+void insert_random();
+void delete_begin();
+void delete_last();
+void delete_random();
+void display();
+
+void main()                               //main function
+{
+int choice;  
+        while(1)  
+        {      
+            printf("1.insert_begin \n2.insert_last\n 3.insert_random 4.delete_begin\n 5.delete_last\n 6. delete_rand\n7.display()\n ");
+              
+            printf("Enter your choice ?");  
+            scanf("%d",&choice);  
+            switch(choice)  
+            {  
+                case 1:insert_begin();  
+                       break;  
+
+                case 2:insert_last();
+                        break;
+                        
+               case 3:insert_random();
+               		break;
+               
+               case 4:delete_begin();  
+                       break;  
+
+               case 5:delete_last();
+                      break;  
+               
+               case 6:delete_random();
+                      break;
+                      
+               case 7:display();
+                      break;
+               
+                default:  
+                printf("Enter valid choice??\n");
+                 
+            }  
+        }  
+    }  
+void insert_begin()             //function to insert at the beginning of the linked list
+{ 
+	struct node *ptr;
+	int item;
+	ptr=(struct node *)malloc(sizeof(struct node));
+	if(ptr==NULL)
+             printf("overflow");
+	
+	
+	else
+	{
+		printf("enter the value");
+		scanf("%d",&item);
+		ptr->data=item;
+		ptr->next=head;
+		head=ptr;
+		printf("node inserted");
+	}
+}
+void insert_last()                  //function to insert at the end of the linked list
+{
+	struct node *ptr,*temp;
+	int item;
+	ptr=(struct node *)malloc(sizeof(struct node));
+	
+	if(ptr==NULL)
+             printf("overflow");
+		
+	else
+	{
+		printf("enter the value ");
+		scanf("%d",&item);
+		ptr->data=item;
+		if(head==NULL)
+		{
+			ptr->next=NULL;
+			head=ptr;
+			printf("node inserted");
+		}
+		else
+		{
+			temp=head;
+			while(temp->next!=NULL)
+		        	temp=temp->next;
+	
+	
+			temp->next=ptr;
+			ptr->next=NULL;
+			printf("NODE INSERTED");
+	}
+}
+} 
+void insert_random()                      //function to insert at a random position
+{
+	struct node *ptr,*temp;
+	int i,item,loc;
+	ptr=(struct node *)malloc(sizeof(struct node));
+	if(ptr==NULL)
+	    printf("OVERFLOW");
+	
+	else
+	{
+		printf("enter the value ");
+		scanf("%d",&item);
+		ptr->data=item;
+		printf("enter the loc after which you want to inser");
+		scanf("%d",&loc);
+		temp=head;
+		for(i=0;i<loc;i++)
+		{
+			temp=temp->next;
+			if(temp==NULL)
+			{
+			    printf("can't insert");
+			    return;
+			}
+			ptr->next=temp->next;
+			temp->next=ptr;
+		}
+	}
+}
+void delete_begin()               //function to delete at the beginning of the linked list
+{
+	struct node *ptr;
+	if(head==NULL)
+	   printf("underflow");
+	
+	else
+	{
+	ptr=head;
+	head=ptr->next;
+	free(ptr);
+	printf("node deleted");
+	}
+}
+void delete_last()
+{
+
+	struct node *ptr,*ptr1;
+	if(head==NULL)
+		printf("underflow");
+	
+	else if(head->next==NULL)
+	{
+		head=NULL;
+		free(head);
+	}
+	else
+	{
+		ptr=head;
+		while(ptr->next!=NULL)
+		{
+			ptr1=ptr;
+			ptr=ptr->next;
+		}
+		ptr1->next=NULL;
+		free(ptr);
+		printf("node deleted");
+	}
+}
+void delete_random()             //delete at the random location in a linked list
+{
+	struct node *ptr,*ptr1;
+	int loc,i;
+	printf("enter the location");
+	scanf("%d",&loc);
+	ptr=head;
+	for(i=0;i<loc;i++)
+	{
+		ptr1=ptr;
+		ptr=ptr->next;
+	        if(ptr==NULL)
+	        {
+	        	printf("can't delete");
+	        	return;
+	        }
+	  }
+	  ptr1->next=ptr->next;
+	  free(ptr);
+	  printf("node deleted");
+}
+	
+void display()                      //function to display the elements
+{
+	struct node *ptr;
+	if(head==NULL)
+	{
+	   printf("empty");
+	   return;
+	}
+	ptr=head;
+	while(ptr!=NULL)
+	{
+		printf("%d",ptr->data);
+		ptr=ptr->next;
+	}
+}
